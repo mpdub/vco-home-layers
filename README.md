@@ -10,7 +10,6 @@ A single static page with no build step and no framework: `index.html`, one styl
 - A sticky header that swaps the "Registered Valuers" descriptor for the small logo once the masthead scrolls away.
 - The layer index in the header, filling as you read down the page.
 - Section rules that draw themselves once as they come into view.
-- Service names that widen slightly on hover, using Archivo's width axis.
 - A phone menu, a hairline contact form with a confirmation state, and the Tauranga local time in the footer.
 - A night version that follows the device's dark mode, with the mark's pink first layer.
 - Pink keyboard focus rings (paper on blue), and all motion off for anyone who has asked their device to reduce it.

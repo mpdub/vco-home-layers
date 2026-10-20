@@ -267,9 +267,7 @@ a { color: inherit; }
   line-height: .98;
   font-weight: 600; font-stretch: 112%;
   letter-spacing: -.03em;
-  transition: font-stretch .45s cubic-bezier(.2, .7, .1, 1);
 }
-.service:hover h3 { font-stretch: 118%; }
 .service p { font-size: 16px; color: var(--text-body); }
 
 .types {
