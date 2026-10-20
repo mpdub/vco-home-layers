@@ -113,6 +113,11 @@ a { color: inherit; }
 .on-blue .mark .layer,
 .on-blue .mark .layer:first-child { fill: var(--paper); }
 
+/* Pointer-following accent on the masthead (script adds .follows on mouse devices). */
+.mark--hero.follows .layer { transition: fill .12s ease-out; }
+.mark--hero.follows .layer:first-child { fill: currentColor; }
+.mark--hero.follows .layer.is-active { fill: var(--mark-accent); }
+
 /* The six layers build once, on a first visit. */
 .intro .mark--hero .layer {
   animation: layer-in .7s cubic-bezier(.2, .7, .1, 1) both;
@@ -228,21 +233,17 @@ a { color: inherit; }
   font-variant-numeric: tabular-nums;
 }
 
-/* ---------- rules draw themselves ---------- */
+/* ---------- rules ---------- */
 
 .rule { position: relative; }
 .rule::before {
   content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px;
   background: currentColor;
-  transform-origin: 0 50%;
 }
 .rule--strong::before { background: var(--fg); }
 .rule--soft::before { background: var(--rule); }
 .on-blue .rule--strong::before { background: var(--paper); }
 .on-blue .rule--soft::before { background: rgba(244, 240, 232, .5); }
-
-.js .draw::before { transform: scaleX(0); transition: transform 1.1s cubic-bezier(.65, 0, .2, 1); }
-.js .draw.in::before { transform: scaleX(1); }
 
 /* ---------- sections ---------- */
 
@@ -351,5 +352,4 @@ a { color: inherit; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
-  .js .draw::before { transform: none; }
 }

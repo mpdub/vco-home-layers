@@ -9,7 +9,7 @@ A single static page with no build step and no framework: `index.html`, one styl
 - The full-width VCO mark as the masthead. Its six layers build in once per browser session.
 - A sticky header that swaps the "Registered Valuers" descriptor for the small logo once the masthead scrolls away.
 - The layer index in the header, filling as you read down the page.
-- Section rules that draw themselves once as they come into view.
+- On a mouse or trackpad, the masthead's blue layer follows the pointer, a whole layer at a time, and settles back on the first layer when the pointer leaves.
 - A phone menu, a hairline contact form with a confirmation state, and the Tauranga local time in the footer.
 - A night version that follows the device's dark mode, with the mark's pink first layer.
 - Pink keyboard focus rings (paper on blue), and all motion off for anyone who has asked their device to reduce it.

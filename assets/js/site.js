@@ -28,17 +28,26 @@
   window.addEventListener('resize', paintIndex);
   paintIndex();
 
-  /* Rules draw themselves, once, as they come into view. */
-  var rules = document.querySelectorAll('.draw');
-  if (reduce || !('IntersectionObserver' in window)) {
-    rules.forEach(function (r) { r.classList.add('in'); });
-  } else {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-      });
-    }, { rootMargin: '0px 0px -8% 0px' });
-    rules.forEach(function (r) { io.observe(r); });
+  /* The masthead's blue layer follows the pointer, a whole layer at a time,
+     and settles back on the first layer (Land) when the pointer leaves.
+     Mouse and trackpad only; touch screens keep the mark as it is. */
+  if (masthead && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    var layers = masthead.querySelectorAll('.layer');
+    var active = 0;
+    var setLayer = function (n) {
+      if (n === active) return;
+      layers[active].classList.remove('is-active');
+      layers[n].classList.add('is-active');
+      active = n;
+    };
+    layers[0].classList.add('is-active');
+    masthead.classList.add('follows');
+    masthead.addEventListener('pointermove', function (e) {
+      var box = masthead.getBoundingClientRect();
+      var n = Math.floor((e.clientY - box.top) / box.height * layers.length);
+      setLayer(Math.max(0, Math.min(layers.length - 1, n)));
+    });
+    masthead.addEventListener('pointerleave', function () { setLayer(0); });
   }
 
   /* Phone menu. */
